@@ -10,12 +10,12 @@ ENV PIP_DISABLE_PIP_VERSION_CHECK=1 \
     PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
 
-# Follow micromamba-docker recommended pattern: COPY env.yaml + micromamba install. :contentReference[oaicite:7]{index=7}
+# Follow micromamba-docker recommended pattern: COPY env.yaml + micromamba install.
 COPY --chown=$MAMBA_USER:$MAMBA_USER conda/env.yaml /tmp/env.yaml
 RUN micromamba install -y -n base -f /tmp/env.yaml && \
     micromamba clean --all --yes
 
-# Optional: install cq-cli (from GitHub via pip+git). :contentReference[oaicite:8]{index=8}
+# Optional: install cq-cli (from GitHub via pip+git).
 COPY --chown=$MAMBA_USER:$MAMBA_USER pip/requirements-cq-cli.txt /tmp/requirements-cq-cli.txt
 RUN if [ "$INSTALL_CQ_CLI" = "1" ]; then \
       micromamba run -n base pip install -r /tmp/requirements-cq-cli.txt; \
@@ -23,5 +23,5 @@ RUN if [ "$INSTALL_CQ_CLI" = "1" ]; then \
 
 WORKDIR /work
 
-# Keep micromamba image ENTRYPOINT (it activates the env for docker run). :contentReference[oaicite:9]{index=9}
+# Keep micromamba image ENTRYPOINT (it activates the env for docker run).
 CMD ["python"]
