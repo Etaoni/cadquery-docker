@@ -29,6 +29,14 @@ Quick sanity check:
 ./scripts/run.sh cadquery:2.7.0 python -c "import cadquery as cq; print(cq.__version__)"
 ```
 
+## Example: export STEP/STL using CadQuery exporters from examples directory
+
+```bash
+./scripts/run.sh cadquery:2.7.0 python ./examples/Ex001_Simple_Block.py
+```
+
+Outputs appear in your current directory.
+
 ## Example: export STEP/STL using CadQuery exporters
 
 Create `box.py`:
