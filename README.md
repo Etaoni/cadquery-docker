@@ -82,4 +82,3 @@ Convert to STL:
 ## Notes
 
 * Headless container (no CQ-editor GUI).
-* This repo avoids Dockerfile heredocs (which can break if delimiters are indented).
